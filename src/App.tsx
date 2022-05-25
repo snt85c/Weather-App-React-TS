@@ -1,10 +1,10 @@
 import {FC} from 'react';
-import Main from './Main';
+import Main from './MainComponents/Main';
 import './App.css';
 
 const App:FC = () => {
   return (
-    <Main />
+    <Main /> 
   );
 }
 
