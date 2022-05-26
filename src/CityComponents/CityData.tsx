@@ -31,7 +31,7 @@ export default function CityData(props: { data?: OpenWeatherMapAPIdata }) {
           <div>{props.data?.weather.current.weather[0].description}</div>
           <WeatherIcon data={props.data?.weather.current.weather[0].icon} />
         </div>
-        <div className="flex flex-col gap-2 p-4 pt-0 md:p-4 xl:pr-10 w-1/2 duration-300">
+        <div className="flex flex-col gap-2 p-4 pr-0 pt-0 pl-16 md:p-4 xl:pr-10 w-1/2 duration-300">
           <FeelsLike data={props.data?.weather.current.feels_like}/>
           <Humidity data={props.data?.weather.current.humidity} />
           <ChanceOfRain data={props.data?.weather.hourly[0].pop}/>
