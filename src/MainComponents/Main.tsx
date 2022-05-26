@@ -1,6 +1,6 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Footer from "./Footer";
-import { GetData } from "../Services/Services";
+import { GetData, GetGeolocation } from "../Services/Services";
 import { OpenWeatherMapAPIdata } from "../Services/APIinterface";
 import CityData from "../CityComponents/CityData";
 import WeeklyForecast from "../WeeklyForecastComponents/WeeklyForecast";
@@ -13,12 +13,8 @@ export default function Main() {
   const [search, setSearch] = useState<string | undefined>();
   const [mode, setMode] = useState<"hourly" | "weekly">("weekly");
 
-
   GetData(search, setWeatherData);
-
-  useEffect(() => {
-    console.log(data);
-  }, [data]);
+  GetGeolocation(setSearch);
 
   return (
     <>
@@ -26,9 +22,15 @@ export default function Main() {
         <Searchbar setSearch={setSearch} />
         <CityData data={data} />
         <div className="flex justify-center items-center -mt-10">
-        <ToggleComponent mode={mode} setMode={setMode}/>
+          <ToggleComponent mode={mode} setMode={setMode} />
         </div>
-        {mode==="weekly"?<WeeklyForecast data={data}/> : <HourlyForecast data={data}/>}
+        <div className="pb-5">
+          {mode === "weekly" ? (
+            <WeeklyForecast data={data} />
+          ) : (
+            <HourlyForecast data={data} />
+          )}
+        </div>
         <Footer />
       </div>
     </>

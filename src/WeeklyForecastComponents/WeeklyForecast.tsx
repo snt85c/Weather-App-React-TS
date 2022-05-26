@@ -21,7 +21,7 @@ export default function WeeklyForecast(props: {
   });
   return (
     <>
-      <div className="flex flex-col justify-evenly items-center md:flex-row fadeInAnimation">{result}</div>
+      <div className="flex flex-col justify-evenly items-center md:flex-row md:px-5 fadeInAnimation">{result}</div>
     </>
   );
 }
