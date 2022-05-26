@@ -24,124 +24,19 @@ export interface OpenWeatherMapAPIdata {
     hourly: [
       {
         pop: number;
+        temp: number;
+        weather: [
+          //0
+          {
+            main: string;
+            icon: string;
+          }
+        ];
       }
     ];
 
     daily: [
       {
-        //0
-        temp: {
-          day: number;
-          min: number;
-        };
-        weather: [
-          {
-            //0
-            main: string;
-            icon: string;
-          }
-        ];
-      },
-      {
-        //1
-        temp: {
-          day: number;
-          min: number;
-        };
-        weather: [
-          {
-            //0
-            main: string;
-            icon: string;
-          }
-        ];
-      },
-      {
-        //2
-        temp: {
-          day: number;
-          min: number;
-        };
-        weather: [
-          {
-            //0
-            main: string;
-            icon: string;
-          }
-        ];
-      },
-      {
-        //3
-        temp: {
-          day: number;
-          min: number;
-        };
-        weather: [
-          {
-            //0
-            main: string;
-            icon: string;
-          }
-        ];
-      },
-      {
-        //4
-        temp: {
-          day: number;
-          min: number;
-        };
-        weather: [
-          {
-            //0
-            main: string;
-            icon: string;
-          }
-        ];
-      },
-      {
-        //5
-        temp: {
-          day: number;
-          min: number;
-        };
-        weather: [
-          {
-            //0
-            main: string;
-            icon: string;
-          }
-        ];
-      },
-      {
-        //6
-        temp: {
-          day: number;
-          min: number;
-        };
-        weather: [
-          {
-            //0
-            main: string;
-            icon: string;
-          }
-        ];
-      },
-      {
-        //7
-        temp: {
-          day: number;
-          min: number;
-        };
-        weather: [
-          {
-            //0
-            main: string;
-            icon: string;
-          }
-        ];
-      },
-      {
-        //8
         temp: {
           day: number;
           min: number;
@@ -166,6 +61,18 @@ export interface IWeekly {
   weather: [
     {
       //0
+      main: string;
+      icon: string;
+    }
+  ];
+}
+
+export interface IHourly {
+  pop: number;
+  temp: number;
+  weather: [
+    //0
+    {
       main: string;
       icon: string;
     }
