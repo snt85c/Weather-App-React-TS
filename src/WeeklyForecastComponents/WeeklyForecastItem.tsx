@@ -8,7 +8,7 @@ export default function WeeklyForecastItem(props: {
   return (
     <>
       <div className="flex md:flex-col flex-row justify-center items-center gap-2 ">
-        <div className="flex text-md xl:text-2xl md:-mb-4 w-20  font-extrabold justify-center items-center">{props.weekday}</div>
+        <div className="flex md:text-md xl:text-xl md:-mb-4 w-20 font-extrabold justify-center items-center">{props.weekday}</div>
         <div className="flex justify-center items-center text-md  w-20">
           {props.data?.weather[0].main}
         </div>

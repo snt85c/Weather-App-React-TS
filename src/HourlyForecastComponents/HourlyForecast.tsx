@@ -10,7 +10,7 @@ export default function HourlyForecast(props: {
     }
   });
   return (
-    <div className="flex flex-col justify-evenly md:px-5 items-center md:flex-row fadeInAnimation">
+    <div className="flex flex-col justify-center md:px-5 items-center md:flex-row fadeInAnimation">
       {result}
     </div>
   );

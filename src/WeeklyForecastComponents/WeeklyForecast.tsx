@@ -13,7 +13,7 @@ export default function WeeklyForecast(props: {
     "Friday",
     "Saturday",
   ];
-  let weekday: number = new Date().getDay() + 1;
+  let weekday: number = new Date().getDay();
   let result = props.data?.weather.daily.map((data, i) => {
     weekday += 1;
     if (weekday > 6) weekday = 0;
