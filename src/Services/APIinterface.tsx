@@ -10,13 +10,21 @@ export interface OpenWeatherMapAPIdata {
     current: {
       temp: number;
       dt: number;
+      feels_like: number;
+      humidity: number;
+      wind_speed:number;
       weather: [
         {
           main: string;
           description: string;
-          icon:string;
+          icon: string;
         }
       ];
     };
+    hourly: [
+      {
+        pop: number;
+      }
+    ];
   };
 }

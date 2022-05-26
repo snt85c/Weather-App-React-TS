@@ -3,19 +3,23 @@ import Footer from "./Footer";
 import { GetData } from "../Services/Services";
 import { OpenWeatherMapAPIdata } from "../Services/APIinterface";
 import CityData from "../CityComponents/CityData";
+import Searchbar from "./Searchbar";
 
 export default function Main() {
   const [data, setWeatherData] = useState<OpenWeatherMapAPIdata>();
+  const [search, setSearch] = useState<string | undefined>();
 
-  GetData("santiago de compostela", setWeatherData);
+  GetData(search, setWeatherData);
 
   useEffect(() => {
     console.log(data);
   }, [data]);
+
   return (
     <>
-      <div className="flex flex-col justify-between min-h-full bg-[url(./img/background.png)] bg-cover text-white ">
-        <CityData data={data}/>
+      <div className="flex flex-col min-h-full bg-[url(./img/background.png)] md:bg-center bg-cover text-white select-none ">
+        <Searchbar setSearch={setSearch} />
+        <CityData data={data} />
         <Footer />
       </div>
     </>

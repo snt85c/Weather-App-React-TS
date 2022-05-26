@@ -3,14 +3,14 @@ import { Dispatch, SetStateAction, useEffect } from "react";
 const openweathermapAPIKEY: string = "f01e320c417dd9583e7ed5e57fb13e71";
 
 export async function GetData(
-  inputValue: string,
+  inputValue: string | undefined,
   setWeatherData: Dispatch<SetStateAction<any>>
 ) {
   useEffect(() => {
     async function FetchData() {
       try {
         const response1 = await fetch(
-          `https://api.openweathermap.org/geo/1.0/direct?q=${inputValue}&limit=5&appid=${openweathermapAPIKEY}`,
+          `https://api.openweathermap.org/geo/1.0/direct?q=${inputValue?inputValue:"santiago de compostela"}&limit=5&appid=${openweathermapAPIKEY}`,
           { mode: "cors" }
         );
         const geoData = await response1.json();
