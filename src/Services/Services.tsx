@@ -2,7 +2,7 @@ import { Dispatch, SetStateAction, useEffect } from "react";
 
 const openweathermapAPIKEY: string = "f01e320c417dd9583e7ed5e57fb13e71";
 
-export async function GetGeolocation(setSearch:Dispatch<SetStateAction<any>>){
+export async function GetGeolocation(setSearch:Dispatch<SetStateAction<any>>, geolocate:boolean){
   useEffect(() => {
     async function geolocation() {
       try {
@@ -22,7 +22,7 @@ export async function GetGeolocation(setSearch:Dispatch<SetStateAction<any>>){
       }
     }
     geolocation();
-  }, []);
+  }, [geolocate]);
 }
 
 export async function GetData(
