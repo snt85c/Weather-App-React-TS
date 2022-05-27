@@ -25,11 +25,11 @@ export default function Main() {
           <ToggleComponent mode={mode} setMode={setMode} />
         </div>
         <div className="pb-5">
-          {mode === "weekly" ? (
+           {mode === "weekly" ? ( 
             <WeeklyForecast data={data} />
-          ) : (
+            ) : (  
             <HourlyForecast data={data} />
-          )}
+            )}
         </div>
         <Footer />
       </div>

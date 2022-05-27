@@ -8,7 +8,7 @@ export default function HourlyForecastItem(props: {
   return (
     <>
       <div className="flex md:flex-col flex-row justify-center items-center gap-2">
-        <div className="flex justify-center items-center font-extrabold md:text-md xl:text-xl md:-mb-4 w-20 md:w-[6rem]">+{props.hour + 1} hour{props.hour > 0?"s":""}</div>
+        <div className="flex justify-center items-center font-extrabold md:text-md xl:text-xl md:-mb-4 w-20 md:w-[6rem]">+{props.hour + 1} hour{props.hour > 0?"s":" "}</div>
         <div>{props.data.weather[0].main}</div>
         <div className="w-10 h-10">
           <WeatherIcon data={props.data?.weather[0].icon} />

@@ -6,7 +6,7 @@ export async function GetGeolocation(setSearch:Dispatch<SetStateAction<any>>){
   useEffect(() => {
     async function geolocation() {
       try {
-        const promise: any = await new Promise((resolve, reject) => {
+        const promise:any = await new Promise((resolve, reject) => {
           navigator.geolocation.getCurrentPosition(resolve, reject);
         });
         let lat: string = promise.coords.latitude;
