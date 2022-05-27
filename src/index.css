@@ -23,11 +23,24 @@ body {
 
 }
 
-.fadeInAnimation {
+.fadeInAnimation{
   animation: fadein 300ms;
+
+}
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
-@keyframes fadein {
+.slideInAnimation {
+  animation: slidein 300ms;
+}
+
+@keyframes slidein {
   from {
     opacity: 0;
     transform:translateX(-100%);
@@ -38,11 +51,11 @@ body {
   }
 }
 
-.fadeOutAnimation{
-  animation: fadeOut 300ms
+.slideOutAnimation{
+  animation: slideout 300ms
 }
 
-@keyframes fadeOut{
+@keyframes slideout{
   from{
     opacity:0;
     transform:translateX(100%);

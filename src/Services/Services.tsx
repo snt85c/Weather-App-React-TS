@@ -33,7 +33,7 @@ export async function GetData(
     async function FetchData() {
       try {
         const response1 = await fetch(
-          `https://api.openweathermap.org/geo/1.0/direct?q=${inputValue?inputValue:"santiago de compostela"}&limit=5&appid=${openweathermapAPIKEY}`,
+          `https://api.openweathermap.org/geo/1.0/direct?q=${inputValue?inputValue:"london"}&limit=5&appid=${openweathermapAPIKEY}`,
           { mode: "cors" }
         );
         const geoData = await response1.json();
