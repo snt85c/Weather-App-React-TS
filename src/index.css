@@ -2,30 +2,42 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap");
 * {
-    font-family: "montserrat";
-    color: white;
+  font-family: "montserrat";
+  color: white;
 }
 
-
-html, #root, body{
-  height:100%;
-  overflow-x:hidden;
+html,
+#root,
+body {
+  height: 100%;
+  overflow-x: hidden;
 }
 body {
   margin: 0;
-  font-family: "montserrat",-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: "montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
+    "Helvetica Neue", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-
 }
 
-.fadeInAnimation{
-  animation: fadein 300ms;
+.fadeInOutInfinite {
+  animation: inOut 1s alternate infinite ease-in;
+}
 
+@keyframes inOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0.5;
+  }
+}
+
+.fadeInAnimation {
+  animation: fadein 1s;
 }
 @keyframes fadein {
   from {
@@ -43,25 +55,25 @@ body {
 @keyframes slidein {
   from {
     opacity: 0;
-    transform:translateX(-100%);
+    transform: translateX(-100%);
   }
   to {
     opacity: 1;
-    transform:translate(0);
+    transform: translate(0);
   }
 }
 
-.slideOutAnimation{
-  animation: slideout 300ms
+.slideOutAnimation {
+  animation: slideout 300ms;
 }
 
-@keyframes slideout{
-  from{
-    opacity:0;
-    transform:translateX(100%);
+@keyframes slideout {
+  from {
+    opacity: 0;
+    transform: translateX(100%);
   }
   to {
-    transform:translate(0);
-    opacity:1;
+    transform: translate(0);
+    opacity: 1;
   }
 }

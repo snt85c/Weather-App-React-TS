@@ -5,6 +5,7 @@ import { OpenWeatherMapAPIdata } from "../Services/APIinterface";
 import CityData from "../CityComponents/CityData";
 import WeeklyForecast from "../WeeklyForecastComponents/WeeklyForecast";
 import Searchbar from "./Searchbar";
+import Spinner from "../Services/Spinner";
 import ToggleComponent from "../CityComponents/ToggleComponent";
 import HourlyForecast from "../HourlyForecastComponents/HourlyForecast";
 
@@ -29,6 +30,11 @@ export default function Main() {
           setGeolocate={setGeolocate}
           geolocate={geolocate}
         />
+        {!data && (
+          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 fadeInAnimation">
+            <Spinner />
+          </div>
+        )}
         {data && (
           <>
             <div className="fadeInAnimation">
