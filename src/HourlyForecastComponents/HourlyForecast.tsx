@@ -2,11 +2,11 @@ import { OpenWeatherMapAPIdata } from "../Services/APIinterface";
 import HourlyForecastItem from "./HourlyForecastItem";
 
 export default function HourlyForecast(props: {
-  data?: OpenWeatherMapAPIdata;
+  data: OpenWeatherMapAPIdata;
 }) {
   let result = props.data?.weather.hourly.map((data, i) => {
     if (i < 8) {
-      return <HourlyForecastItem data={data} key={i} hour={i}/>;
+      return <HourlyForecastItem data={data} timezone={props.data?.weather.timezone} key={i} offset={i + 1}/>;
     }
   });
   return (
