@@ -15,6 +15,10 @@ export default function Main() {
   const [mode, setMode] = useState<"hourly" | "weekly">("weekly");
   const [geolocate, setGeolocate] = useState<boolean>(false);
 
+  useEffect(() => {
+    console.log(data);
+  }, [data]);
+
   GetData(search, setWeatherData);
   GetGeolocation(setSearch, geolocate);
 
