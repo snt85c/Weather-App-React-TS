@@ -39,7 +39,7 @@ export default function HourlyForecastItem(props: {
           <div className="flex justify-center items-center -mt-1 text-[0.5rem]">temp</div>
         </div>
         <div>
-          <div className="flex justify-center items-center">{(props.data.pop * 10).toFixed(0)}%</div>
+          <div className="flex justify-center items-center">{(props.data.pop * 100).toFixed(0)}%</div>
           <div className=" -mt-1 text-[0.5rem]"> chance of rain</div>
         </div>
       </div>

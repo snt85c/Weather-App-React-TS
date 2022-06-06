@@ -1,7 +1,7 @@
 import rainIcon from "../img/rain.png"
 export default function ChanceOfRain(props:{data?:number}){
 
-  let pop = props.data? ((props.data * 10).toFixed(0)): 0
+  let pop = props.data? ((props.data * 100).toFixed(0)): 0
     return(<>
      <div className="flex flex-row justify-end">
         <img src={rainIcon} className="w-8 h-8 mr-2 " />
