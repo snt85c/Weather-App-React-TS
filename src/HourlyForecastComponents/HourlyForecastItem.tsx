@@ -30,11 +30,6 @@ export default function HourlyForecastItem(props: {
         </div>
         <div className="flex justify-center items-center text-center text-sm">{props.data.weather[0].description}</div>
 
-        <div className="w-1/4 md:w-full">
-          <div className="flex justify-center items-center md:text-xl md:font-extrabold">{(props.data.pop * 100).toFixed(0)}%</div>
-          <div className="flex justify-center items-center -mt-1 text-[0.5rem]"> chance of rain</div>
-        </div>
-
         <div className="w-10 h-10 md:-my-4">
           <WeatherIcon data={props.data?.weather[0].icon} />
         </div>
@@ -46,7 +41,10 @@ export default function HourlyForecastItem(props: {
           <div className="flex justify-center items-center -mt-1 text-[0.5rem]">temp</div>
         </div>
 
-       
+        <div className="w-1/4 md:w-full">
+          <div className="flex justify-center items-center md:text-xl md:font-extrabold">{(props.data.pop * 100).toFixed(0)}%</div>
+          <div className="flex justify-center items-center -mt-1 text-[0.5rem]"> chance of rain</div>
+        </div>       
 
       </div>
       <div className="last:border-0 border-b-2 md:border-0 border-gray-400 w-1/2 opacity-50"></div>
