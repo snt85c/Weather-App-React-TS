@@ -6,6 +6,7 @@ import Humidity from "./Humidity";
 import ChanceOfRain from "./ChanceOfRain";
 import { OpenWeatherMapAPIdata } from "../Services/APIinterface";
 import WindSpeed from "./WindSpeed";
+import Weekday from "./Weekday";
 
 export default function CityData(props: { data?: OpenWeatherMapAPIdata }) {
   return (
@@ -25,11 +26,12 @@ export default function CityData(props: { data?: OpenWeatherMapAPIdata }) {
             />
             <Clock data={props.data?.weather.timezone} />
           </div>
-          <div className="text-xl md:text-4xl">
+          <Weekday/>
+          <div className="text-xl -mb-1 md:text-4xl">
             {props.data?.weather.current.weather[0].main}
           </div>
           <div>{props.data?.weather.current.weather[0].description}</div>
-          <div className="w-16 h-16">
+          <div className="w-16 h-16 -mt-3">
             <WeatherIcon data={props.data?.weather.current.weather[0].icon} />
           </div>
         </div>

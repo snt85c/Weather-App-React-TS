@@ -29,6 +29,7 @@ export interface OpenWeatherMapAPIdata {
           //0
           {
             main: string;
+            description: string;
             icon: string;
           }
         ];
@@ -37,6 +38,7 @@ export interface OpenWeatherMapAPIdata {
 
     daily: [
       {
+        pop: number;
         temp: {
           day: number;
           min: number;
@@ -45,6 +47,7 @@ export interface OpenWeatherMapAPIdata {
           {
             //0
             main: string;
+            description: string;
             icon: string;
           }
         ];
@@ -54,6 +57,7 @@ export interface OpenWeatherMapAPIdata {
 }
 
 export interface IWeekly {
+  pop: number;
   temp: {
     day: number;
     min: number;
@@ -62,6 +66,7 @@ export interface IWeekly {
     {
       //0
       main: string;
+      description: string;
       icon: string;
     }
   ];
@@ -74,6 +79,7 @@ export interface IHourly {
     //0
     {
       main: string;
+      description: string;
       icon: string;
     }
   ];
