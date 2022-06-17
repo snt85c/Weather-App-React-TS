@@ -9,17 +9,19 @@ export default function Searchbar(search: {
   const [input, setInput] = useState<string | undefined>();
 
   useEffect(() => {
-    const listener = (e: KeyboardEvent) => {
-      if (e.key === "Enter") {
-        e.preventDefault();
+    const listener = (event: { key: string; preventDefault: () => void }) => {
+      if (event.key === "Enter") {
+        event.preventDefault();
         search.setSearch(input);
       }
     };
-    document.addEventListener("keydown", (e) => listener(e));
+    document.addEventListener("keydown", listener);
     return () => {
-      document.removeEventListener("keydown", (e) => listener(e));
+      document.removeEventListener("keydown", listener);
     };
   });
+
+
   return (
     <div className="flex  items-center">
       <input
@@ -39,10 +41,7 @@ export default function Searchbar(search: {
           onClick={() => search.setSearch(input)}
         />
       </div>
-      <div
-        className="tooltip tooltip-bottom"
-        data-tip="activate user geolocation"
-      >
+      <div className="tooltip tooltip-bottom" data-tip="activate user geolocation">
         <FaMapMarkerAlt
           className="cursor-pointer ml-2"
           onClick={() => search.setGeolocate(!search.geolocate)}
