@@ -28,9 +28,9 @@ export default function HourlyForecastItem(props: {
           <div className="-mt-1 text-[0.5rem] pr-1">+{props.offset}</div>
           {time}
         </div>
-        <div className="flex justify-center items-center text-center text-sm w-1/4">{props.data.weather[0].description}</div>
+        <div className="flex justify-center items-center text-center text-sm">{props.data.weather[0].description}</div>
 
-        <div className="w-1/4">
+        <div className="w-1/4 md:w-full">
           <div className="flex justify-center items-center md:text-xl md:font-extrabold">{(props.data.pop * 100).toFixed(0)}%</div>
           <div className="flex justify-center items-center -mt-1 text-[0.5rem]"> chance of rain</div>
         </div>
@@ -39,7 +39,7 @@ export default function HourlyForecastItem(props: {
           <WeatherIcon data={props.data?.weather[0].icon} />
         </div>
 
-        <div className="w-1/4">
+        <div className="w-1/4 md:w-full">
           <div className="flex justify-center items-center md:text-xl md:font-extrabold">
             {props.data.temp ? (props.data.temp - 273.15).toFixed(1) : ""}°C
           </div>
