@@ -23,16 +23,11 @@ export default function Main() {
   GetData(search, setWeatherData);
   GetGeolocation(setSearch, geolocate);
 
-  const handlers = useSwipeable({
+  const swipeHandlers = useSwipeable({
     onSwiped: (eventData) => {
-      console.log("User Swiped!", eventData)
-      if(eventData.dir === "Right"){
-        setMode("weekly")
-      }else{
-        setMode("hourly")
-      }
-
-    }
+      // console.log("User Swiped!", eventData);
+      eventData.dir === "Right" ? setMode("weekly") : setMode("hourly");
+    },
   });
 
   return (
@@ -55,7 +50,7 @@ export default function Main() {
               <div className="flex justify-center items-center -mt-10">
                 <ToggleComponent mode={mode} setMode={setMode} />
               </div>
-              <div  {...handlers} className="pb-5">
+              <div {...swipeHandlers} className="pb-5">
                 {mode === "weekly" ? (
                   <WeeklyForecast data={data} />
                 ) : (

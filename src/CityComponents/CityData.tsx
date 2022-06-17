@@ -16,7 +16,6 @@ export default function CityData(props: { data?: OpenWeatherMapAPIdata }) {
           <div className="text-3xl md:text-5xl font-extrabold">
             {props.data?.geo[0].name}
           </div>
-          <CurrentTemp data={props.data?.weather.current.temp} />
           <div className="flex flex-row items-center gap-2">
             <div>{props.data?.geo[0].country}</div>
             <img
@@ -24,13 +23,14 @@ export default function CityData(props: { data?: OpenWeatherMapAPIdata }) {
               src={`https://flagcdn.com/w20/${props.data?.geo[0].country.toLowerCase()}.png`}
               alt=""
             />
-            <Clock data={props.data?.weather.timezone} />
           </div>
-          <Weekday/>
+          <Weekday />
+          <Clock data={props.data?.weather.timezone} />
           <div className="text-xl -mb-1 md:text-4xl">
             {props.data?.weather.current.weather[0].main}
           </div>
           <div>{props.data?.weather.current.weather[0].description}</div>
+          <CurrentTemp data={props.data?.weather.current.temp} />
           <div className="w-16 h-16 -mt-3">
             <WeatherIcon data={props.data?.weather.current.weather[0].icon} />
           </div>
