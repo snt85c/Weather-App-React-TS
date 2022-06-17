@@ -8,7 +8,6 @@ export default function HourlyForecastItem(props: {
   offset: number;
 }) {
   const [time, setTime] = useState<string>();
-
   useEffect(() => {
     let timer: Date = new Date();
     timer.setHours(timer.getHours() + props.offset);
@@ -20,6 +19,9 @@ export default function HourlyForecastItem(props: {
       })
     );
   }, [props.timezone]);
+
+
+
 
   return (
     <>

@@ -8,6 +8,7 @@ import Searchbar from "./Searchbar";
 import Spinner from "../Services/Spinner";
 import ToggleComponent from "../CityComponents/ToggleComponent";
 import HourlyForecast from "../HourlyForecastComponents/HourlyForecast";
+import { useSwipeable } from "react-swipeable";
 
 export default function Main() {
   const [data, setWeatherData] = useState<OpenWeatherMapAPIdata>();
@@ -21,6 +22,18 @@ export default function Main() {
 
   GetData(search, setWeatherData);
   GetGeolocation(setSearch, geolocate);
+
+  const handlers = useSwipeable({
+    onSwiped: (eventData) => {
+      console.log("User Swiped!", eventData)
+      if(eventData.dir === "Right"){
+        setMode("weekly")
+      }else{
+        setMode("hourly")
+      }
+
+    }
+  });
 
   return (
     <>
@@ -42,7 +55,7 @@ export default function Main() {
               <div className="flex justify-center items-center -mt-10">
                 <ToggleComponent mode={mode} setMode={setMode} />
               </div>
-              <div className="pb-5">
+              <div  {...handlers} className="pb-5">
                 {mode === "weekly" ? (
                   <WeeklyForecast data={data} />
                 ) : (
