@@ -13,7 +13,9 @@ import { useSwipeable } from "react-swipeable";
 export default function Main() {
   const [data, setWeatherData] = useState<OpenWeatherMapAPIdata>();
   const [search, setSearch] = useState<string | undefined>();
-  const [showHourlyOrWeekly, setShowHourlyOrWeekly] = useState<"hourly" | "weekly">("weekly");
+  const [showHourlyOrWeekly, setShowHourlyOrWeekly] = useState<
+    "hourly" | "weekly"
+  >("weekly");
   const [geolocate, setGeolocate] = useState<boolean>(false);
 
   useEffect(() => {
@@ -26,9 +28,35 @@ export default function Main() {
   const swipeHandlers = useSwipeable({
     onSwiped: (eventData) => {
       // console.log("User Swiped!", eventData);
-      eventData.dir === "Right" ? setShowHourlyOrWeekly("weekly") : setShowHourlyOrWeekly("hourly");
+      eventData.dir === "Right"
+        ? setShowHourlyOrWeekly("weekly")
+        : setShowHourlyOrWeekly("hourly");
     },
   });
+
+  function TestSwipeDiv() {
+    const [deltaX, setDeltaX] = useState<number>(0);
+
+    const swipeTest = useSwipeable({
+      onSwiping: (e) => {
+        setDeltaX(e.deltaX);
+        // console.log(deltaX)
+      },
+      onSwiped:() =>{
+        if(deltaX && (deltaX < 200 || deltaX > -200))
+        setDeltaX(0) 
+      }
+    });
+    return (
+      <>
+        <div
+          {...swipeTest}
+          className="flex justify-center items-center text-center text-white bg-amber-600 border border-amber-500 h-10 mx-3 duration-300"
+          style={{ transform: `translateX(${deltaX}px)`, backgroundColor: deltaX && (deltaX >= 200 || deltaX <= -200)?"red":"blue" }}
+        >{deltaX}</div>
+      </>
+    );
+  }
 
   return (
     <>
@@ -48,8 +76,12 @@ export default function Main() {
             <div className="fadeInAnimation">
               <CityData data={data} />
               <div className="flex justify-center items-center -mt-10">
-                <ToggleComponent mode={showHourlyOrWeekly} setMode={setShowHourlyOrWeekly} />
+                <ToggleComponent
+                  mode={showHourlyOrWeekly}
+                  setMode={setShowHourlyOrWeekly}
+                />
               </div>
+              <TestSwipeDiv />
               <div {...swipeHandlers} className="pb-5">
                 {showHourlyOrWeekly === "weekly" ? (
                   <WeeklyForecast data={data} />
