@@ -69,7 +69,7 @@ export function TestSwipeDiv2() {
     <>
       <div {...swipeTest} className="flex">
         <div
-          className="flex m-1 px-2 justify-between items-center text-center text-white bg-amber-600 border border-amber-500 h-10 mx-3 duration-100 w-full"
+          className="flex m-1 px-2 justify-between items-center text-center text-white bg-amber-600 border border-amber-500 h-10 mx-3 duration-300 w-full"
           style={{
             transform: `translateX(${deltaX}px)`,
             backgroundColor:
