@@ -1,18 +1,27 @@
 import { IWeekly } from "../Services/APIinterface";
+import { MONTH, Ordinal } from "../Services/Services";
 import WeatherIcon from "../CityComponents/WeatherIcon";
 export default function WeeklyForecastItem(props: {
   data: IWeekly;
   weekday: string;
+  i: number;
 }) {
+
+  const date:Date = new Date()
+
+
   return (
     <>
       <div className="flex md:flex-col flex-row justify-center items-center gap-2 w-full px-2">
-        <div className=" flex md:text-md xl:text-xl md:-mb-4 font-extrabold justify-center items-center w-1/4">
-          {props.weekday}
+        <div className=" flex flex-col md:text-md xl:text-xl font-extrabold justify-center items-center w-1/2">
+          <div>{props.weekday}</div>
+          <div className="flex justify-center items-center text-[0.7rem] -mt-2 md:-my-1 font-normal md:w-[100px]">{date.getUTCDate() + props.i}{Ordinal(date.getUTCDate()+ props.i)}{" of "}{MONTH[date.getMonth()]}</div>
         </div>
+        
         <div className="flex justify-center items-center text-md  w-1/4">
           {props.data?.weather[0].main}
         </div>
+
         <div className="flex justify-center items-center w-10 h-10 md:-my-4">
           <WeatherIcon data={props.data?.weather[0].icon} />
         </div>
@@ -20,7 +29,7 @@ export default function WeeklyForecastItem(props: {
           <div className="flex justify-center items-center md:text-xl md:font-extrabold">
             {props.data ? (props.data?.temp.day - 273.15).toFixed(1) : ""}°C
           </div>
-          <div className="flex justify-center items-center -mt-1 text-[0.5rem] w-full ">daily average</div>
+          <div className="flex justify-center items-center -mt-1 text-[0.5rem] w-full ">max</div>
         </div>
         <div className="w-1/4">
           <div className="flex justify-center items-center md:text-xl md:font-extrabold">
@@ -32,7 +41,7 @@ export default function WeeklyForecastItem(props: {
           <div className="flex justify-center items-center md:text-xl md:font-extrabold">
             {(props.data && props.data?.pop * 100).toFixed(0)}%
           </div>
-          <div className="flex justify-center items-center -mt-1 text-[0.5rem] w-full "> chance of rain</div>
+          <div className="flex justify-center items-center -mt-1 text-[0.5rem] w-full ">rain</div>
         </div>
       </div>
       <div className="last:border-0 border-b-2 md:border-0 border-gray-400 w-1/2 opacity-50"></div>

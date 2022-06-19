@@ -10,6 +10,7 @@ export default function Searchbar(search: {
 
   useEffect(() => {
     const listener = (event: { key: string; preventDefault: () => void }) => {
+      //detects if the user is pressing the enter key to start a search
       if (event.key === "Enter") {
         event.preventDefault();
         search.setSearch(input);

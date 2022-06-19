@@ -53,3 +53,43 @@ export async function GetData(
     FetchData();
   }, [inputValue]);
 }
+
+export function Ordinal(calendarDay:number) {
+//gets a calendar day, then perform module 10 on it to get the last digit. switch case return right notation for the date
+  const temp:number = calendarDay % 10
+  switch (temp){
+    case  1:
+      return <span className="text-[0.5rem]">st</span>
+    case 2:
+      return <span className="text-[0.5rem]">nd</span>
+    case 3:
+      return <span className="text-[0.5rem]">rd</span>
+    default:
+      return <span className="text-[0.5rem]">th</span>
+  }
+}
+
+export const DAYS = [
+  "Sunday",
+  "Monday",
+  "Tuesday",
+  "Wednesday",
+  "Thursday",
+  "Friday",
+  "Saturday",
+];
+
+export const MONTH = [
+  "January",
+  "February",
+  "March",
+  "April",
+  "May",
+  "June",
+  "July",
+  "August",
+  "September",
+  "October",
+  "November",
+  "December",
+];

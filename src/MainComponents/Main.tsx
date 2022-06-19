@@ -13,7 +13,7 @@ import { useSwipeable } from "react-swipeable";
 export default function Main() {
   const [data, setWeatherData] = useState<OpenWeatherMapAPIdata>();
   const [search, setSearch] = useState<string | undefined>();
-  const [mode, setMode] = useState<"hourly" | "weekly">("weekly");
+  const [showHourlyOrWeekly, setShowHourlyOrWeekly] = useState<"hourly" | "weekly">("weekly");
   const [geolocate, setGeolocate] = useState<boolean>(false);
 
   useEffect(() => {
@@ -26,7 +26,7 @@ export default function Main() {
   const swipeHandlers = useSwipeable({
     onSwiped: (eventData) => {
       // console.log("User Swiped!", eventData);
-      eventData.dir === "Right" ? setMode("weekly") : setMode("hourly");
+      eventData.dir === "Right" ? setShowHourlyOrWeekly("weekly") : setShowHourlyOrWeekly("hourly");
     },
   });
 
@@ -48,10 +48,10 @@ export default function Main() {
             <div className="fadeInAnimation">
               <CityData data={data} />
               <div className="flex justify-center items-center -mt-10">
-                <ToggleComponent mode={mode} setMode={setMode} />
+                <ToggleComponent mode={showHourlyOrWeekly} setMode={setShowHourlyOrWeekly} />
               </div>
               <div {...swipeHandlers} className="pb-5">
-                {mode === "weekly" ? (
+                {showHourlyOrWeekly === "weekly" ? (
                   <WeeklyForecast data={data} />
                 ) : (
                   <HourlyForecast data={data} />

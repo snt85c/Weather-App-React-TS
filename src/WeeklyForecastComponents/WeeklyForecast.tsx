@@ -1,18 +1,11 @@
 import { OpenWeatherMapAPIdata } from "../Services/APIinterface";
 import WeeklyForecastItem from "./WeeklyForecastItem";
+import { DAYS } from "../Services/Services";
 
 export default function WeeklyForecast(props: {
   data?: OpenWeatherMapAPIdata;
 }) {
-  const DAYS = [
-    "Sunday",
-    "Monday",
-    "Tuesday",
-    "Wednesday",
-    "Thursday",
-    "Friday",
-    "Saturday",
-  ];
+
   let weekday: number = new Date().getDay();
   let result = props.data?.weather.daily.map((data, i) => {
     weekday++;
@@ -22,7 +15,7 @@ export default function WeeklyForecast(props: {
     if (i > 0) {
       //avoid showing day 0 (today)
       return (
-          <WeeklyForecastItem data={data} key={i} weekday={DAYS[weekday]} />
+          <WeeklyForecastItem data={data} key={i} weekday={DAYS[weekday]} i={i} />
       );
     }else{
       weekday--
