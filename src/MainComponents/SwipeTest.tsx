@@ -69,7 +69,7 @@ export function TestSwipeDiv2() {
     <>
       <div {...swipeTest} className="flex">
         <div
-          className="flex m-1 px-2 justify-between items-center text-center text-white bg-amber-600 border border-amber-500 h-10 mx-3 duration-300 w-full"
+          className="flex m-1 px-2 justify-between items-center text-center text-white bg-amber-600 border border-amber-500 h-10 mx-3 duration-100 w-full"
           style={{
             transform: `translateX(${deltaX}px)`,
             backgroundColor:
@@ -79,7 +79,7 @@ export function TestSwipeDiv2() {
           <div style={{ opacity: opacityLx }}>delete</div>
           <div className="absolute left-[50%] right-[50%] top-auto flex flex-col justify-center items-center">
             {/* {Math.abs(deltaX).toFixed(0)} */}
-            <div className="text-[0.8rem] -mt-2">swipe test 2</div>
+            <div className="text-[0.8rem] -mt-2 leading-none">swipe 2</div>
           </div>
           <div style={{ opacity: opacityRx }}>{messageRx}</div>
         </div>
