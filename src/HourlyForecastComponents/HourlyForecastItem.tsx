@@ -31,7 +31,7 @@ export default function HourlyForecastItem(props: {
           {time}
         </div>
 
-        <div className="w-10 h-10 md:-mb-4">
+        <div className="flex justify-center items-center w-10 h-10">
           <WeatherIcon data={props.data?.weather[0].icon} />
         </div>
         <div className="flex justify-center items-center text-center text-sm leading-[1] w-1/2 ">{props.data.weather[0].description}</div>

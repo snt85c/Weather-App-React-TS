@@ -7,22 +7,25 @@ export default function WeeklyForecastItem(props: {
   i: number;
 }) {
 
-  const date:Date = new Date()
+  let date:Date = new Date()
+  date.setDate(date.getDate() + props.i)
 
+  const day:number = date.getDate()
+  const month:number = date.getMonth()
 
   return (
     <>
       <div className="flex md:flex-col flex-row justify-center items-center gap-2 w-full px-2">
         <div className=" flex flex-col md:text-md xl:text-xl font-extrabold justify-center items-center w-1/2">
           <div>{props.weekday}</div>
-          <div className="flex justify-center items-center text-[0.7rem] -mt-2 md:-my-1 font-normal md:w-[100px]">{date.getUTCDate() + props.i}{Ordinal(date.getUTCDate()+ props.i)}{" of "}{MONTH[date.getMonth()]}</div>
+          <div className="flex justify-center items-center text-[0.7rem] -mt-2 md:-my-1 font-normal md:w-[100px]">{day}{Ordinal(day)}{" of "}{MONTH[month]}</div>
         </div>
         
         <div className="flex justify-center items-center text-md  w-1/4">
           {props.data?.weather[0].main}
         </div>
 
-        <div className="flex justify-center items-center w-10 h-10 md:-my-4">
+        <div className="flex justify-center items-center w-10 h-10">
           <WeatherIcon data={props.data?.weather[0].icon} />
         </div>
         <div className="w-1/4">
