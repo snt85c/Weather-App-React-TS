@@ -45,10 +45,10 @@ export function TestSwipeDiv2() {
         setDeltaX(e.deltaX);
       }
       if (e.dir === "Right") {
-        setOpacityLx(deltaX);
+        setOpacityLx(deltaX / 100);
         setColor("red");
       } else {
-        setOpacityRx(Math.abs(deltaX));
+        setOpacityRx(Math.abs(deltaX) / 100);
         setColor("purple");
       }
     },
