@@ -1,6 +1,6 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useSwipeable } from "react-swipeable";
-import { GiCancel, GiConfirmed } from 'react-icons/gi';
+import { GiCancel, GiConfirmed } from "react-icons/gi";
 
 export function TestSwipeDiv() {
   const [deltaX, setDeltaX] = useState<number>(0);
@@ -45,9 +45,11 @@ export function TestSwipeDiv2() {
   const [opacityRx, setOpacityRx] = useState<number>(0);
   const [messageRx, setMessageRx] = useState<string>("highlight");
   const [swipeColor, setSwipeColor] = useState<"red" | "purple" | "">("");
-  const [highlight, setHighlight] = useState<"purple" | "">("");
+  const [highlight, setHighlight] = useState<"purple" | "" | "red">("");
   const [isDeleting, setIsDeleting] = useState<boolean>(false);
   const [isDeleted, setIsDeleted] = useState<boolean>(false);
+
+  useEffect(()=>{console.log(isDeleting)},[isDeleting])
 
   const swipeTest = useSwipeable({
     onSwiping: (e) => {
@@ -75,7 +77,9 @@ export function TestSwipeDiv2() {
         setIsDeleted(false);
       }
       if (deltaX && deltaX > 150) {
-        setIsDeleting(true);
+        //if i detect a swipe right, set isDeleting so that i can conditionally render a message with two buttons to confirm or deny the action directly on the component
+        setIsDeleting(!isDeleting);
+        !isDeleting ? setHighlight("red") : setHighlight("");
       }
       //when i detect that the swiping is finished, set everything to default value, so that the div comes back to his original position and opacity
       setDeltaX(0);
@@ -87,11 +91,13 @@ export function TestSwipeDiv2() {
   const handleDeleteN = () => {
     setIsDeleted(false);
     setIsDeleting(false);
+    setHighlight("")
   };
 
   const handleDeleteY = () => {
     setIsDeleted(true);
     setIsDeleting(false);
+    setHighlight("")
   };
 
   return (
@@ -118,9 +124,13 @@ export function TestSwipeDiv2() {
           )}
           {isDeleting && (
             <div className="absolute left-[50%] right-[50%] top-auto flex flex-row gap-4 justify-center items-center text-[0.8rem] w-1/2">
-              <div onClick={handleDeleteY}><GiConfirmed/></div>
+              <div onClick={handleDeleteY}>
+                <GiConfirmed />
+              </div>
               <span>delete?</span>
-              <span onClick={handleDeleteN}><GiCancel/></span>
+              <span onClick={handleDeleteN}>
+                <GiCancel />
+              </span>
             </div>
           )}
         </div>
