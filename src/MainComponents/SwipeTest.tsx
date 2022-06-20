@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useSwipeable } from "react-swipeable";
+import { GiCancel, GiConfirmed } from 'react-icons/gi';
 
 export function TestSwipeDiv() {
   const [deltaX, setDeltaX] = useState<number>(0);
@@ -32,7 +33,7 @@ export function TestSwipeDiv() {
 }
 
 export function TestSwipeDiv2() {
-    /*
+  /*
     -deltaX is the difference between the start point and the current point on the x axis
     -opacityLx keeps tracks of the opacity of the left element, same for opacityRx. 
     -messageRx is the value of the text in the div, which will change when the component is swipe over a certain amount
@@ -43,12 +44,14 @@ export function TestSwipeDiv2() {
   const [opacityLx, setOpacityLx] = useState<number>(0);
   const [opacityRx, setOpacityRx] = useState<number>(0);
   const [messageRx, setMessageRx] = useState<string>("highlight");
-  const [swipeColor, setSwipeColor] = useState<"red" | "purple" | "" >("");
+  const [swipeColor, setSwipeColor] = useState<"red" | "purple" | "">("");
   const [highlight, setHighlight] = useState<"purple" | "">("");
+  const [isDeleting, setIsDeleting] = useState<boolean>(false);
+  const [isDeleted, setIsDeleted] = useState<boolean>(false);
 
   const swipeTest = useSwipeable({
     onSwiping: (e) => {
-      //sets a limit to how much the component can be moved on screen on x axis, as it stops setting the state after a certain amount, keeping it at 200/-200 while swiping 
+      //sets a limit to how much the component can be moved on screen on x axis, as it stops setting the state after a certain amount, keeping it at 200/-200 while swiping
       if (Math.abs(e.deltaX) < 200) {
         setDeltaX(e.deltaX);
       }
@@ -62,37 +65,64 @@ export function TestSwipeDiv2() {
       }
     },
     onSwiped: (e) => {
-      //when i detect that the swiping is finished, set everything to default value, so that the div comes back to his original position and opacity
-      setDeltaX(0);
-      setOpacityLx(0);
-      setOpacityRx(0);
       if (deltaX && deltaX < -150) {
         //if i detect a swipe left more than 150, set the bg color to purple/remove the color and change the message
         highlight === "" ? setHighlight("purple") : setHighlight("");
         messageRx === "highlight"
           ? setMessageRx("remove highlight")
           : setMessageRx("highlight");
+        setIsDeleting(false);
+        setIsDeleted(false);
       }
-      //condition  "delta > 150" is not present, as it should be a delete action, which is not useful for this test 
+      if (deltaX && deltaX > 150) {
+        setIsDeleting(true);
+      }
+      //when i detect that the swiping is finished, set everything to default value, so that the div comes back to his original position and opacity
+      setDeltaX(0);
+      setOpacityLx(0);
+      setOpacityRx(0);
     },
   });
+
+  const handleDeleteN = () => {
+    setIsDeleted(false);
+    setIsDeleting(false);
+  };
+
+  const handleDeleteY = () => {
+    setIsDeleted(true);
+    setIsDeleting(false);
+  };
 
   return (
     <>
       <div
         {...swipeTest}
-        className="flex m-1 px-2 justify-between items-center text-center text-white bg-amber-600 border border-amber-500 h-10 mx-3 duration-300"
+        className="flex m-1 px-2 justify-between items-center text-center text-white border rounded border-amber-500 h-10 mx-3 duration-300"
         style={{
           transform: `translateX(${deltaX}px)`,
           backgroundColor:
             //if the value of deltaX is below a certain amount, use the color of the swipe direction (red or purple), if i go over the limit, set the color to the bgColor(highlighted in purple when swiping left)
-            deltaX && (deltaX >= 150 || deltaX <= -150) ? swipeColor : highlight,
+            deltaX && (deltaX >= 150 || deltaX <= -150)
+              ? swipeColor
+              : highlight,
         }}
       >
         {/* one div on the left with delete, one centered with absolute values so that it wont change position when the right message changes, and a left div with a custom message */}
         <div style={{ opacity: opacityLx }}>delete</div>
-        <div className="absolute left-[50%] right-[50%] top-auto flex flex-col justify-center items-center">
-          <div className="text-[0.8rem] -mt-2 leading-none">swipe 2</div>
+        <div className="absolute left-[50%] right-[50%] top-auto flex flex-col justify-center items-center ">
+          {!isDeleting && (
+            <div className="flex flex-col justify-center items-center text-[0.8rem] w-1/2">
+              {isDeleted ? "DELETED" : "swipe test 2"}
+            </div>
+          )}
+          {isDeleting && (
+            <div className="absolute left-[50%] right-[50%] top-auto flex flex-row gap-4 justify-center items-center text-[0.8rem] w-1/2">
+              <div onClick={handleDeleteY}><GiConfirmed/></div>
+              <span>delete?</span>
+              <span onClick={handleDeleteN}><GiCancel/></span>
+            </div>
+          )}
         </div>
         <div style={{ opacity: opacityRx }}>{messageRx}</div>
       </div>
