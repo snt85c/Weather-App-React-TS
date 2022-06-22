@@ -33,7 +33,7 @@ export default function WeeklyForecastItem(props: {
           {props.data?.weather[0].main}
         </div>
 
-        <div className="flex justify-center items-center w-10 h-10">
+        <div className="flex justify-center items-center md:-my-4 w-10 h-10">
           <WeatherIcon data={props.data?.weather[0].icon} />
         </div>
         <div className="w-1/4">

@@ -9,7 +9,6 @@ import Spinner from "../Services/Spinner";
 import ToggleComponent from "../CityComponents/ToggleComponent";
 import HourlyForecast from "../HourlyForecastComponents/HourlyForecast";
 import { useSwipeable } from "react-swipeable";
-import {TestSwipeDiv, TestSwipeDiv2} from "./SwipeTest";
 
 
 export default function Main() {
@@ -61,8 +60,6 @@ export default function Main() {
                   setMode={setShowHourlyOrWeekly}
                 />
               </div>
-              <TestSwipeDiv />
-              <TestSwipeDiv2 />
               <div {...swipeHandlers} className="pb-5">
                 {showHourlyOrWeekly === "weekly" ? (
                   <WeeklyForecast data={data} />
