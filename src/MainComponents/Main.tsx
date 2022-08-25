@@ -19,12 +19,9 @@ export default function Main() {
   >("weekly");
   const [geolocate, setGeolocate] = useState<boolean>(false);
 
-  useEffect(() => {
-    console.log(data);
-  }, [data]);
+    GetData(search, setWeatherData);
+    GetGeolocation(setSearch, geolocate);
 
-  GetData(search, setWeatherData);
-  GetGeolocation(setSearch, geolocate);
 
   const swipeHandlers = useSwipeable({
     onSwiped: (eventData) => {

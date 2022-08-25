@@ -6,7 +6,7 @@ export default function ToggleComponent(props:{mode:"weekly"|"hourly", setMode:D
       <div className="flex flex-col md:pb-5">
         <label
           htmlFor="default-toggle"
-          className="inline-flex relative items-center cursor-pointer "
+          className="hidden sm:inline-flex relative items-center cursor-pointer   "
         >
           <input
             onClick={() => props.setMode(props.mode === "weekly" ? "hourly" : "weekly")}
