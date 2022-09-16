@@ -5,7 +5,7 @@ export default function HourlyForecast(props: {
   data: OpenWeatherMapAPIdata;
 }) {
   let result = props.data?.weather.hourly.map((data, i) => {
-    if (i < 8) {
+    if (i < 7) {
       return <HourlyForecastItem data={data} timezone={props.data?.weather.timezone} key={i} offset={i + 1}/>;
     }
   });

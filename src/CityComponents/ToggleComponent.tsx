@@ -3,10 +3,10 @@ import { Dispatch} from "react";
 export default function ToggleComponent(props:{mode:"weekly"|"hourly", setMode:Dispatch<React.SetStateAction<"weekly" | "hourly">>}) {
   return (
     <>
-      <div className="flex flex-col md:pb-5">
+      <div className="flex flex-col w-11 h-6">
         <label
           htmlFor="default-toggle"
-          className="hidden sm:inline-flex relative items-center cursor-pointer   "
+          className=" relative items-center cursor-pointer  "
         >
           <input
             onClick={() => props.setMode(props.mode === "weekly" ? "hourly" : "weekly")}

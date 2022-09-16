@@ -4,10 +4,10 @@ export default function WindSpeed(props: { data?: number }) {
     <>
       {" "}
       <div className="flex flex-row justify-end">
-        <img src={windSpeedIcon} className="w-8 h-8 mr-2 " />
-        <div className="flex flex-col w-32">
-          <div className="text-[0.7rem] font-extrabold">wind speed</div>
-          <div>{props.data}km/h</div>
+        <img src={windSpeedIcon} className="w-[5vw] sm:w-[2vw] h-[5vw] sm:h-[2vw] mr-2 " />
+        <div className="flex flex-col w-[15vw]">
+          <div className="text-[3vw] md:text-[1.5vw] font-extrabold">wind speed</div>
+          <div className="text-[3vw] md:text-[1.5vw]">{props.data}km/h</div>
         </div>
       </div>
     </>

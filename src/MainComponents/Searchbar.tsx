@@ -27,7 +27,7 @@ export default function Searchbar(search: {
     <div className="flex  items-center">
       <input
         placeholder="search"
-        className="w-1/2 md:w-1/3 xl:w-1/4 xl:ml-10 m-4 pl-2 rounded text-black opacity-30 duration-300 focus:opacity-100"
+        className="w-1/2 text-[3vw] md:text-[1.5vw] md:w-1/3 xl:w-1/4 xl:ml-10 m-4 pl-2 rounded text-black opacity-30 duration-300 focus:opacity-100"
         onChange={(e) => setInput(e.target.value)}
         onFocus={(e) => {
           e.target.value = "";

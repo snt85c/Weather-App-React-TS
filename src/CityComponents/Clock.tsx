@@ -11,5 +11,5 @@ export default function Clock(props: { data?: string }) {
     );
   }
   setTimeout(getTime, 1000);
-  return <>{time}</>;
+  return <div className="text-[3vw] md:text-[1.5vw]">{time}</div>;
 }

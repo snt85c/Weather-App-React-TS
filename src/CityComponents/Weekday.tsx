@@ -15,7 +15,7 @@ export default function Weekday() {
 
   return (
     <>
-      <div className="font-extrabold -my-1">
+      <div className="font-extrabold -my-1 text-[3vw] md:text-[1.5vw]">
         {DAYS[weekday]}: {calendarDay}{Ordinal(calendarDay)} of {MONTH[month]}
       </div>
     </>
